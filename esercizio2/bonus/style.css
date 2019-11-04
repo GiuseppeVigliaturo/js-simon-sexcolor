@@ -1,0 +1,94 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "montserrat";
+}
+body{
+  background: #333;
+}
+.middle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.card{
+  cursor: pointer;
+  width: 340px;
+  height: 480px;
+}
+
+.front,.back{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  /* rendo invisibile la parte posteriore del div
+  altrimenti durante la rotazione si vedrebbe*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*importante dare questo position absolute
+  rispetto a card che li contiene  entrambi
+  altrimenti il secondo div va sotto*/
+  transition: transform 0.6s linear;
+}
+
+.front img{
+  height: 100%;
+}
+.front{
+  transform: perspective(600px) rotateY(0deg);
+  /* all'inizio do alla faccia davanti una posizione rispetto a y ruotata di 0 gradi */
+}
+.back{
+  background: #f1f1f1;
+  transform: perspective(600px) rotateY(180deg);
+  /* all'inizio do alla faccia dietro una posizione rispetto a y ruotata di 180 gradi
+  e avendo la faccia dietro invisiblie grazie a backface visibility viene rimpiazzata da quella davanti
+  e viceversa durante la rotazione */
+
+}
+.back-content{
+  color: #2c3e50;
+  text-align: center;
+  width: 100%;
+}
+.sm{
+  margin: 20px 0;
+}
+.sm a{
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  color: #2c3e50;
+  font-size: 18px;
+  transition: 0.4s;
+  border-radius: 50%
+}
+.sm a:hover{
+  background: #2c3e50;
+  color: white;
+}
+.card:hover > .front{
+  transform: perspective(600px) rotateY(-180deg);
+  /*sull'hover cambio la posizione della faccia davanti
+  e di quella dietro ruotando entrambe di 180gradi sull'asse y rispetto alla
+  posizione di partenza*/
+}
+.card:hover > .back{
+  transform: perspective(600px) rotateY(0deg);
+}
+
+#coloresesso{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  height: 100%;
+  width: 100%;
+  font-size: 3em;
+}
