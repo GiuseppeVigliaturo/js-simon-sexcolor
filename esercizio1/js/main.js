@@ -23,21 +23,40 @@ alert(listanumeri);
 console.log(listanumeri);
 
 //Dopo 30 secondi l’utente deve inserire un prompt alla volta i numeri che ha visto precedentemente
-setTimeout(myFunction, (1000*3));
+setTimeout(myFunction, (1000*30));
 function myFunction() {
   //chiedo all'utente di inserire i numeri visti prima
 
   for (var i = 0; i < 5 ; i++) {
 
     var user = parseInt(prompt("inserisci un numero"));
-
     var mossa = (listanumeri.includes(user));
 
-    if (mossa == true) {
+    if (mossa ==true) {
       punteggio +=1;
     }
+
+    var verifica= (numInseriti.includes(user));
+        if (verifica == true) {
+         console.log("hai già inserito il numero: ",user);
+         punteggio -=1;
+       }else if (user > 100) {
+         alert("non puoi inserire numeri superiori a 100");
+       }else if (isNaN(user) === true) {
+         alert("devi inserire un numero");
+
+       }else {
+         numInseriti.push(user);
+       }
+
+
+
   }
+  if (punteggio < 0) {
+    console.log("Il tuo punteggio è: 0");
+  }else {
   console.log("Il tuo punteggio è: ",punteggio);
+  }
   console.log(numInseriti);
 }
 
