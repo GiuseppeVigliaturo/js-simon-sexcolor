@@ -3,7 +3,7 @@
 // Sulla pagina html deve apparire “Ciao <nome>“, il colore del nome deve essere azzurro o rosa a seconda del sesso inserito.
 
 var nome = prompt("Ciao iserisci il tuo nome");
-var sesso = prompt(" scegli il sesso");
+var sesso =prompt(" scegli il sesso");
 
 var scelta= document.getElementById("coloresesso");
 scelta.innerHTML = "ciao " + nome;
